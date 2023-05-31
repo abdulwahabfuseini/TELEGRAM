@@ -1,0 +1,569 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+:root{
+    --side-color: rgb(48, 48, 80);
+    --body-color: #ffff;
+    --text-color: #00030f;
+    --primary-color: rgb(110, 106, 106);
+    --border-color: rgb(201, 196, 196);
+    --icon-color: rgb(22, 179, 231);
+    --active-color: rgb(65, 65, 216);
+    --header-color: #ffff;
+    --secondary-color: #d6d7d8;
+    --message1-color: #fff;
+    --message2-color: #dcf8c6;
+}
+body{
+    width: 100%;
+    overflow: hidden;
+    background: var(--secondary-color);
+}
+body.dark{
+    --side-color: rgb(48, 48, 80);
+    --body-color: #15171d;
+    --text-color: #fff;
+    --primary-color: rgb(110, 106, 106);
+    --border-color: rgb(201, 196, 196);
+    --icon-color: rgb(22, 179, 231);
+    --active-color: rgb(65, 65, 216);
+    --header-color: #111114;
+    --secondary-color: #35373a;
+    --message1-color: rgba(255, 255, 255, 0.1);
+    --message2-color: rgb(23, 23, 73);
+}
+/* ======= sidebar =======  */
+.sidebar .sideLeft{
+    background: var(--side-color);
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 4.5vw;
+    height: 49vw;
+}
+.sidebar .sideLeft .active .side{
+    padding: 0.8vw 0;
+}
+.sidebar .sideLeft .active .side i{
+    font-size: 1.3vw;
+    color: var(--primary-color);
+}
+.sidebar .sideLeft .active .side p{
+    font-size: 0.8vw;
+    padding: 0.5vw 0 0;
+    color: var(--primary-color);
+}
+.hiddenbar{
+    background: var(--body-color);
+    box-shadow: 3px 10px 20px 0px rgb(85 85 85 /20%);
+    top: 0;
+    left: -100%;
+    position: absolute;
+    width: 22vw;
+    height: 49vw;
+    z-index: 100;
+}
+body.dark .hiddenbar{
+    box-shadow: none;
+    background: var(--header-color);
+}
+
+.hiddenbar.appear{
+    left: 0;
+}
+.hiddenbar .profile{
+    border-bottom: 0.14vw solid var(--secondary-color);
+    padding: 1.4vw 1.4vw 0.5vw;
+}
+.hiddenbar .profile img{
+    width: 2.8vw;
+    border-radius: 50%;
+    margin-bottom: 0.8vw;
+}
+.hiddenbar .profile p{
+    text-transform: uppercase;
+    font-size: 1vw;
+    color: var(--text-color);
+}
+.hiddenbar .profile h6{
+    font-size: 1vw;
+    padding: 0.4vw 0;
+    text-transform: capitalize;
+    color: var(--icon-color);
+    font-weight: 100;
+}
+.hiddenbar .account{
+    border-bottom: 0.14vw solid var(--secondary-color);
+    padding: 1vw 1.4vw 0.5vw;
+}
+.hiddenbar .account .add{
+    display: flex;
+    align-items: center;
+    gap: 1.4vw;
+    height: 2.6vw;
+}
+.hiddenbar .account .details img{
+    width: 2vw;
+    border-radius: 50%;
+}
+.hiddenbar .account .details p{
+    text-transform: uppercase;
+    font-size: 1vw;
+    color: var(--text-color);
+}
+.hiddenbar .account .create i{
+    font-size: 1.3vw;
+    color:  var(--icon-color);
+    width: 2vw;
+    text-align: center;
+}
+.hiddenbar .account .create p{
+    text-transform: capitalize;
+    font-size: 0.98vw;
+    color: var(--text-color);
+}
+.hiddenbar .account-contents{
+    padding: 0.4vw 1.4vw;
+}
+.hiddenbar .account-contents .new{
+    display: flex;
+    gap: 1.4vw;
+    align-items: center;
+    line-height: 2.98vw;
+}
+.hiddenbar .account-contents i{
+    font-size: 1vw;
+    background: var(--icon-color);
+    color: var(--body-color);
+    width: 1.8vw;
+    text-align: center;
+    padding: 0.4vw 0.1vw;
+    border-radius: 0.3vw;
+}
+.hiddenbar .account-contents .fa-gear{
+    background: rgb(177, 152, 206);
+}
+.hiddenbar .account-contents .fa-phone{
+    background: rgb(152, 206, 173);
+}
+.hiddenbar .account-contents .fa-user{
+    background: rgb(241, 79, 4);
+}
+.hiddenbar .account-contents .fa-box{
+    background: rgb(241, 167, 6);
+}
+.hiddenbar .account-contents .new p{
+    text-transform: capitalize;
+    font-size: 1vw;
+    color: var(--text-color);
+}
+.hiddenbar .account-contents .new .switch{
+    width: 2.3vw;
+    height: 1vw;
+    background: var(--primary-color);
+    position: relative;
+    border-radius: 0.5vw;
+    margin-left: 6vw;
+    cursor: pointer;
+}
+body.dark .hiddenbar .account-contents .new .switch{
+    background: var(--icon-color);
+}
+.hiddenbar .account-contents .new .switch::before{
+    content: "";
+    top: -0.2vw;
+    left: -0.25vw;
+    position: absolute;
+    height: 1.14vw;
+    width: 1.2vw;
+    background: var(--body-color);
+    border-radius: 50%;
+    border: 0.2vw solid var(--primary-color);
+}
+body.dark .hiddenbar .account-contents .new .switch::before{
+    left: 0.8vw;
+    border: 0.2vw solid var(--icon-color);
+}
+.hiddenbar .desktop{
+    padding: 7.4vw 1.4vw;
+}
+.hiddenbar .desktop h2{
+    text-transform: capitalize;
+    font-size: 1vw;
+    color: var(--primary-color);
+    font-weight: 100;
+}
+.hiddenbar .desktop p{
+    text-transform: capitalize;
+    font-size: 1vw;
+    color: var(--primary-color);
+    font-weight: 100;
+    padding: 0.5vw 0;
+}
+.fa-solid{
+    cursor: pointer;
+}
+
+/* ======= chat =======  */
+.chat{
+    background: var(--body-color);
+    border-right: 2px solid rgba(0,0,0,.06);
+    padding: 1vw 0;
+    top: 0;
+    left: 4.5vw;
+    position: fixed;
+    width: calc(100% - 4.5vw);
+    max-width: 21vw;
+    height: 49vw;
+    overflow: hidden;
+}
+.chat .search-box{
+    position: relative;
+    text-align: center;
+    padding: 0  1vw;
+}
+.chat .search-box i{
+    top: 0.8vw;
+    left: 1.9vw;
+    font-size: 1vw;
+    color: var(--primary-color);
+    position: absolute;
+}
+.chat .search-box input{
+    padding: 0.8vw 2vw;
+    border: 0.16vw solid rgb(247, 246, 246);
+    font-size: 1vw;
+    background: rgb(247, 246, 246);
+    outline: none;
+    cursor: pointer;
+    width: 18vw;
+}
+.chat .search-box input:focus{
+    border-color: rgb(104, 230, 156);
+}
+body.dark .chat .search-box input{
+    background: var(--header-color);
+}
+.chat .friends{
+    margin-top: 1vw;
+    overflow-y: scroll;
+    height: 49vw;
+}
+.chat .friends::-webkit-scrollbar{
+    width: 0.5rem;
+}
+.chat .friends::-webkit-scrollbar-track{
+    background: none;
+}
+.chat .friends::-webkit-scrollbar-thumb{
+    background: var(--primary-color);
+    border-radius: 1vw;
+    display: none;
+}
+.chat:hover .friends::-webkit-scrollbar-thumb{
+   display: block;
+}
+.chat .friends .chat-pro{
+    display: grid;
+    grid-template-columns: 1fr 3.5fr 1.4fr;
+    padding: 0.4vw;
+}
+.chat .friends .chat-pro p{
+    line-height: 1.5vw;
+    font-size: 1.1vw;
+    color: var(--text-color);
+}
+.chat .friends .chat-pro h6{
+    margin-right: 0;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+.chat .friends .chat-pro .typing{
+    color: green;
+    font-size: 0.9vw;
+}
+.chat .friends .chat-pro img{
+    width: 2.8vw;
+    height: 2.8vw;
+    border-radius: 50%;
+}
+.chat .friends .chat-pro span{
+    font-size: 0.9vw;
+    color: var(--primary-color);
+}
+
+/* ====== chat-area =======  */
+.chat-area{
+    background-image: linear-gradient(rgba(164, 247, 164, 0.7),rgba(125, 151, 77, 0.7)), url(/images/whattsapp.jpg);
+    background-position: cover;
+    top: 0;
+    left: 25vw;
+    position: fixed;
+    width: calc(100% - 25vw);
+    max-width: 53vw;
+    height: 49vw;
+}
+body.dark .chat-area{
+    background: var(--header-color);
+}
+.chat-area.display{
+    max-width: 75vw;
+}
+.chat-area.expand{
+    max-width: 75vw;
+}
+.chat-area .chat-header{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    background: var(--body-color);
+    padding: 0.8vw 2vw;
+}
+.chat-area .chat-header .chat-detail{
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+.chat-area .chat-header .chat-detail img{
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50%;
+}
+.chat-area .chat-header .chat-detail p{
+    font-size: 1vw;
+    color: var(--text-color);
+}
+.chat-area .chat-header .chat-detail span{
+    font-size: 0.9vw;
+    color: green;
+    padding-top: 0.6vw;
+}
+.chat-area .chat-header .connect{
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   gap: 2vw;
+}
+.chat-area .chat-header .connect i{
+    color: var(--primary-color);
+    font-size: 1.3vw;
+}
+.chat-area .chat-header .connect img{
+    font-size: 1.3vw;
+    width: 1.8vw;
+    cursor: pointer;
+}
+.chat-area .chat-body h3{
+    font-size: 0.8vw;
+    padding: 0.4vw;
+    text-align: center;
+    border-radius: 0.8vw;
+}
+.chat-area .chat-body .textarea{
+    height: 40.5vw;
+}
+.chat-area .chat-body .message{
+    position: relative;
+    display: flex;
+    margin: 0.5vw 0;
+    padding: 0 0.5vw;
+}
+.chat-area .chat-body .message p{
+    right: 0;
+    text-align: right;
+    max-width: 65%;
+    padding: 0.4vw 0.6vw;
+    background: var(--message2-color);
+    color: var(--text-color);
+    border-radius: 0.5vw;
+    border-bottom-right-radius: 0;
+    font-size: 0.94vw;
+    position: relative;
+}
+.chat-area .chat-body .message span{
+    font-size: 0.8vw;
+    color: var(--primary-color);
+}
+.chat-area .chat-body .message.kulele-message{
+    justify-content: flex-start;
+}
+.chat-area .chat-body .message.kulele-message p{
+    background: var(--message1-color);
+}
+.chat-area .chat-body .message.my-message{
+    justify-content: flex-end;
+}
+.chat-area .chat-body .chat-input{
+    display: grid;
+    grid-template-columns: 0.3fr 6fr 0.8fr;
+    gap: 0.5vw;
+    height: 3.86vw;
+    background: var(--body-color);
+    padding: 0.5vw 2vw;
+}
+.chat-area .chat-input input{
+    outline: none;
+    border: none;
+    font-size: 1vw;
+    padding: 0.6vw 2vw;
+    background: none;
+}
+.chat-area .chat-input  i{
+    color: var(--side-color);
+    font-size: 1.5vw;
+    padding: 0.5vw;
+}
+.chat-area .emoji{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.8vw;
+}
+.chat-area .emoji i{
+    color: var(--side-color);
+    font-size: 1.5vw;
+}
+
+/* ==== user-info ======  */
+.user-info{
+    background: var(--secondary-color);
+    top: 0;
+    left: 78vw;
+    width: calc(100% - 78vw);
+    max-width: 22vw;
+    height: 49vw;
+    position: relative;
+}
+.user-info.show{
+    left: 100%;
+}
+.chat-area.display ~ .user-info{
+    left: 100%;
+}
+.chat-area.expand ~ .user-info.show{
+    left: 100%;
+}
+.chat-area.expand ~ .user-info.sub{
+    left: 78vw;
+}
+.user-info .info{
+    background: var(--body-color);
+}
+.user-info .info .user{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.28vw 1.5vw;
+}
+.user-info .info .user h3{
+    font-weight: 200;
+    font-size: 1.4vw;
+    color: var(--text-color);
+}
+.user-info .info .pro{
+    display: flex;
+    align-items: center;
+    gap: 1.3vw;
+    padding: 1.6vw 1.3vw;
+}
+.user-info .info .pro p{
+    line-height: 1.6vw;
+    font-size: 1.2vw;
+    color: var(--text-color);
+}
+.user-info .info .pro span{
+    font-size: 1vw;
+    color: green;
+    font-weight: 700;
+}
+.user-info .info .pro img{
+    width: 4vw;
+    height: 3.8vw;
+    border-radius: 50%;
+}
+.user-info .contact-info{
+    background: var(--body-color);
+    margin-top: 0.4vw;  
+}
+.user-info .contact-info .contact{
+    display: flex;
+    align-items: center;
+    gap: 1.8vw;
+    padding: 0.9vw 1.7vw;
+    position: relative;
+}
+.user-info .contact-info .contact h5{
+    margin-left: 2.9vw;
+    font-size: 1vw;
+    color: var(--primary-color);
+    line-height: 1.5vw;
+}
+.user-info .contact-info .contact p{
+    font-size: 1vw;
+    color: var(--primary-color);
+    line-height: 1.5vw;
+    position: relative;
+}
+.user-info .contact-info .contact .switch{
+    width: 2.3vw;
+    height: 1vw;
+    background: var(--active-color);
+    position: relative;
+    border-radius: 0.5vw;
+    margin-left: 6vw;
+    cursor: pointer;
+}
+.user-info .contact-info .contact .switch::before{
+    content: "";
+    top: -0.2vw;
+    left: -0.25vw;
+    position: absolute;
+    height: 1.14vw;
+    width: 1.2vw;
+    background: var(--body-color);
+    border-radius: 50%;
+    border: 0.2vw solid var(--active-color);
+}
+.user-info .contact-info .contact span{
+    font-size: 0.9vw;
+    color: var(--primary-color);
+}
+.user-info .gallery{
+    background: var(--body-color);
+    margin-top: 0.4vw;
+}
+.user-info .gallery .mic{
+    display: flex;
+    gap: 2vw;
+    margin: 0.1vw 1.7vw;
+    padding: 0.8vw 0px;
+}
+.user-info .gallery .mic p{
+    font-size: 1vw;
+    color: var(--primary-color);
+}
+.user-info .share{
+    background: var(--body-color);
+    padding:  0.3vw 1.7vw;
+    margin-top: 0.5vw;
+}
+.user-info .share .edit{
+    display: flex;
+    text-align: center;
+    gap: 2vw;
+    padding: 0.95vw 0px;
+}
+.user-info .share .edit p{
+    font-size: 1vw;
+    color: var(--primary-color);
+}
+.user-info .fa-solid{
+    color: var(--primary-color);
+    font-size: 1.2vw;
+    width: 1.2vw;
+}
+
